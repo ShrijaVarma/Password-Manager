@@ -16,7 +16,14 @@ def add_password():
         password_entry.delete(0, tk.END)
     else:
         messagebox.showwarning("Error", "Please fill in all the fields.")
-
+def get_password():
+    service = service_entry.get().strip()
+    if service in passwords:
+        username = passwords[service]['username']
+        password = passwords[service]['password']
+        messagebox.showinfo("Password", f"Username: {username}\nPassword: {password}")
+    else:
+        messagebox.showwarning("Error", "No password found for the entered account.") 
 
 window = tk.Tk()
 window.title("Password Manager")
